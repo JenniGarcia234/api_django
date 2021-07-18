@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <title>students api</title>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ </head>
+<body>
+<div>
+   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+  <br>
+    <br>
+<div class="container">
+  <div class="row">
+    <a class="btn btn-primary" href="#" onclick='show(1)'>Pending</a>
+    <a class="btn btn-primary" href="#" onclick='show(2)'>In Process</a>
+    <a class="btn btn-primary" href="#" onclick='show(3)'>Completed</a>
+    <a class="btn btn-primary" href="#" onclick='show(4)'>Delivered</a>
+     <a class="btn btn-primary" href="#" onclick='show(5)'>Cancel</a>
+  </div>
+  <br>
+
+  <table>
+    <tr>
+        <td>
+            &nbsp;
+        </td>
+        <td>
+            <div id="table1"> 
+          <table id="pendings" class="table table-striped table-bordered" style="width:100%">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Artist</th>
+              <th>Album name</th>
+              <th>Year</th>
+              <th>Genres</th>
+            </tr>
+          </thead>
+        </table>
+            </div>
+            <div id="table2"> 
+            Beto
+             </div>
+            <div id="table3"> 
+            
+            
+             </div>
+            <div id="table4">
+            
+            
+            </div>
+            
+              <div id="table5">
+            
+            
+            </div> 
+        </td>
+    </tr>
+</table>
+</div>
+
+</body>
+</html>
+<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  <script src="//cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+  <script>
+      $(document).ready(function() {
+          $('#pendings').DataTable({
+              'serverSide': true,
+              'ajax': '/api/order-pending/?format=datatables',
+              'columns': [
+                  {'data': 'id'},
+                  {'data': 'date_ordered'},
+                  {'data': 'status'},
+                  {'data': 'total'},
+                  {'data': 'updated_at'},
+                  
+              ]
+
+          });
+      });
+  </script>
+<script>
+function show(nr) {
+    document.getElementById("table1").style.display="none";
+    document.getElementById("table2").style.display="none";
+    document.getElementById("table3").style.display="none";
+    document.getElementById("table4").style.display="none";
+    document.getElementById("table"+nr).style.display="block";
+}
+
+
+</script>

@@ -1,0 +1,36 @@
+{% extends "orders/base.html" %}
+
+{% block content %}
+    <table id="myStaticDatatable">
+        <thead>
+        <tr>
+            <th>ORDER ID</th>
+            <th>PRODUCT</th>
+            <th>QUANTITY</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for order in order_list %}
+            <tr>
+                <td>{{ order.order }}</td>
+                <td>
+                    {{ order.product}}
+                </td>
+                 <td>
+                    {{ order.quantity }}
+                </td>
+               
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+
+{% block extra_js %}
+    <script>
+        $(document).ready(function () {
+            $('#myStaticDatatable').DataTable();
+        });
+    </script>
+{% endblock %}
